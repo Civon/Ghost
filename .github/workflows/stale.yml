@@ -4,6 +4,7 @@ on:
     - cron: '0 15 * * *'
 jobs:
   stale:
+    if: github.repository_owner == 'TryGhost'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/stale@v5
@@ -21,5 +22,7 @@ jobs:
           exempt-issue-labels: 'feature,pinned'
           exempt-pr-labels: 'feature,pinned'
           days-before-stale: 120
+          days-before-pr-stale: -1
           stale-issue-label: 'stale'
           stale-pr-label: 'stale'
+          close-issue-reason: 'not_planned'
